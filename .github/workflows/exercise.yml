@@ -19,8 +19,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Exercise workflow
-
         run: |
+          echo pwd
           source settings/variables.txt
           firebase_real_time_db_url="${{ secrets.FIREBASE_DB_URL }}"
           
@@ -67,3 +67,5 @@ jobs:
           else
             exit 1
           fi
+
+        shell: sh -e {0}
