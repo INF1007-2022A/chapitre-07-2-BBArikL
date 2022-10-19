@@ -21,7 +21,7 @@ jobs:
 
       - name: Exercise workflow
         run: |
-          pwd
+          echo $(pwd)
           source settings/variables.txt
           firebase_real_time_db_url="${{ secrets.FIREBASE_DB_URL }}"
           
