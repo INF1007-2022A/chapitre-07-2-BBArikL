@@ -21,13 +21,8 @@ jobs:
 
       - name: Exercise workflow
         run: |
-          echo $(pwd)
-          echo $(ls -la)
-          echo $(cat "settings/variables.txt")
           source settings/variables.txt
-          echo "is it working?"
           firebase_real_time_db_url="${{ secrets.FIREBASE_DB_URL }}"
-          echo "got secrets"
           
           function run_tests() {
             python3 "$test_file"
@@ -62,20 +57,13 @@ jobs:
           
           if [[ $GITHUB_REPOSITORY =~ $org_name/$repo_filter ]]
           then
-            echo "installing classroom tools"
             python3 -m pip install -q setuptools
             python3 -m pip install -q git+"$classroom_tools_url"
-            echo "running tests"
             run_tests
-            echo "extracting grades"
             extract_grades
-            echo "showing grades"
             show_grades
-            echo "pushing modifications"
             push_modifications
-            echo "patching db"
             patch_db
           else
-            echo "exiting with code 1"
             exit 1
           fi
