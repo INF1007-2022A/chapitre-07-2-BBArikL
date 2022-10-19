@@ -23,6 +23,7 @@ jobs:
         run: |
           echo $(pwd)
           echo $(ls -la)
+          echo $(cat "settings/variables.txt")
           source settings/variables.txt
           firebase_real_time_db_url="${{ secrets.FIREBASE_DB_URL }}"
           
