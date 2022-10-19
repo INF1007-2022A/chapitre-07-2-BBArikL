@@ -4,9 +4,9 @@ on:
   repository_dispatch:
     branches: master
   workflow_dispatch:
-    branches: master
+
   push:
-    branches: master
+    branches: [master]
     paths:
       - exercice.py
       - README.md
